@@ -4,6 +4,7 @@ import com.example.newsfilm.data.MovieRepositoryIMPL
 import com.example.newsfilm.data.datasource.MovieCacheDataSource
 import com.example.newsfilm.data.datasource.MovieLocalDataSource
 import com.example.newsfilm.data.datasource.MovieRemoteDataSource
+import com.example.newsfilm.data.datasource.MovieRemoteDataSourceUP
 import com.example.newsfilm.domian.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
@@ -19,12 +20,14 @@ class RepositoryModule() {
         movieCacheDataSource: MovieCacheDataSource,
         movieLocalDataSource: MovieLocalDataSource,
         movieRemoteDataSource: MovieRemoteDataSource,
+        movieRemoteDataSource2: MovieRemoteDataSourceUP
     ): MovieRepository {
 
         return MovieRepositoryIMPL(
             movieRemoteDataSource,
             movieCacheDataSource,
-            movieLocalDataSource
+            movieLocalDataSource,
+            movieRemoteDataSource2
         )
     }
 

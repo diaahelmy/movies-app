@@ -2,8 +2,7 @@ package com.example.newsfilm.Presentetion
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.appcompat.app.AppCompatActivity
@@ -19,9 +18,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsfilm.Presentetion.di.Injector
 import com.example.newsfilm.R
+import com.example.newsfilm.data.MovieRepositoryIMPL
+import com.example.newsfilm.data.datasource.MovieCacheDataSource
 import com.example.newsfilm.databinding.ActivityMainBinding
 import javax.inject.Inject
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     @Inject
@@ -35,25 +35,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        if (isNetworkAvailable()) {
+
+        binding.button.setOnClickListener {
+
+            val intent = Intent(this, MainActivity2::class.java)
+            startActivity(intent)
+
+        }
+
+
+
 
             (application as Injector).createMovieSubComponent().inject(this)
 
             movieViewModel = ViewModelProvider(this, factory)[MyViewModel::class.java]
 
             initRecyclerView()
-        }else{
-            displayPopularMovie()
-            Toast.makeText(this, "No internet connection available.", Toast.LENGTH_SHORT).show()
 
-
-        }
 
     }
 
     private fun initRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = MovieAdapter()
+        adapter = MovieAdapter(this)
         binding.recyclerView.adapter = adapter
 
         displayPopularMovie()
@@ -113,7 +117,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-     fun isNetworkAvailable(): Boolean {
+    fun isNetworkAvailable(): Boolean {
         val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         val activeNetwork = connectivityManager.activeNetwork ?: return false

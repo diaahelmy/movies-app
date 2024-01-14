@@ -22,5 +22,4 @@ interface AppComponent {
 
     fun movieSubComponent():MovieSubComponent.Factory
 
-
 }

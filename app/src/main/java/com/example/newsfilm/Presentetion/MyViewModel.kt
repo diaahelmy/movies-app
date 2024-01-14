@@ -14,11 +14,21 @@ class MyViewModel(
     fun getMovies() = liveData {
         val movielist = getMovieUseCase.execute()
         emit(movielist)
+
     }
 
     fun updateMovies() = liveData {
         val movielist = updateMovieUseCase.execute()
         emit(movielist)
+
+    }
+    fun getMovies2() = liveData {
+        val movielist2 = getMovieUseCase.execute2()
+        emit(movielist2)
+    }
+    fun updateMovies2() = liveData {
+        val movielist2 = updateMovieUseCase.execute2()
+        emit(movielist2)
 
     }
 

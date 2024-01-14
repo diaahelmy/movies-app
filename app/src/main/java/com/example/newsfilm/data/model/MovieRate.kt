@@ -4,10 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity (tableName = "popular_movies")
-
-data class Movie(
-
+@Entity(tableName = "rate_movies")
+data class MovieRate(
 
     @SerializedName("id")
     @PrimaryKey
@@ -22,5 +20,4 @@ data class Movie(
     val release_date: String,
 
     val title: String,
-
-    )
+)

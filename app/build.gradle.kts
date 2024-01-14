@@ -63,9 +63,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    val lifecycle_version = "2.6.2"
+    val lifecycle_version = "2.7.0"
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
@@ -75,8 +75,6 @@ dependencies {
     //noinspection LifecycleAnnotationProcessorWithJava8
     kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
 
-    // Annotation processor
-    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
 
     //Room database
     val room_version = "2.6.0"
@@ -95,7 +93,6 @@ dependencies {
     kapt("com.google.dagger:dagger-android-processor:2.48.1")
 
     implementation ("com.google.dagger:dagger-android:2.48.1")
-    kapt ("com.google.dagger:dagger-compiler:2.48.1")
 
 // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

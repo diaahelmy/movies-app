@@ -1,6 +1,7 @@
 package com.example.newsfilm.Presentetion.di
 
 import com.example.newsfilm.data.api.TMDP
+import com.example.newsfilm.data.api.TMDPUpcoming
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -19,10 +20,17 @@ class NetModule(private val baseUrl: String) {
 
     }
 
-@Singleton
-@Provides
-fun providerTMDPService(retrofit: Retrofit):TMDP{
+    @Singleton
+    @Provides
+    fun providerTMDPService(retrofit: Retrofit): TMDP {
 
-return retrofit.create(TMDP::class.java)
-}
+        return retrofit.create(TMDP::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun providerTMDPService2(retrofit: Retrofit): TMDPUpcoming {
+
+        return retrofit.create(TMDPUpcoming::class.java)
+    }
 }
